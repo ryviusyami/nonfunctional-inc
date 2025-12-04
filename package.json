@@ -1,0 +1,25 @@
+{
+    "name": "we-civilization-platform",
+    "version": "0.1.0",
+    "description": "We文明项目 - AI未来文明和通用AI语言平台",
+    "private": true,
+    "workspaces": [
+        "apps/*"
+    ],
+    "scripts": {
+        "dev": "concurrently \"npm run dev:api\" \"npm run dev:web\"",
+        "dev:api": "npm run dev --workspace=apps/api",
+        "dev:web": "npm run dev --workspace=apps/web",
+        "build": "npm run build --workspaces --if-present",
+        "test": "npm run test --workspaces --if-present",
+        "clean": "rm -rf apps/*/dist apps/*/build packages/*/dist"
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2",
+        "typescript": "^5.3.0"
+    },
+    "engines": {
+        "node": ">=18.0.0",
+        "npm": ">=9.0.0"
+    }
+}

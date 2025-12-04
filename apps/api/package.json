@@ -1,0 +1,23 @@
+{
+    "name": "@we-civilization/api",
+    "version": "0.1.0",
+    "description": "We文明平台 - 后端API",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon index.js",
+        "start": "node index.js",
+        "build": "echo 'API build completed'",
+        "test": "jest"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.21.2",
+        "mongodb": "^6.12.0",
+        "dotenv": "^16.3.1"
+    },
+    "devDependencies": {
+        "jest": "^29.7.0",
+        "nodemon": "^3.0.2",
+        "supertest": "^6.3.3"
+    }
+}

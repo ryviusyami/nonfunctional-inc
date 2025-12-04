@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@100;200;300;400;500;600;700&family=Kosugi&family=Kosugi+Maru&family=Mona+Sans:ital,wdth,wght@0,75..125,200..900;1,75..125,200..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Yusei+Magic&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+
+
+
+.montserrat {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.ibm-bold {
+    font-family: "IBM Plex Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.kosugi-regular {
+    font-family: "Kosugi", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.kosugi-maru-regular {
+    font-family: "Kosugi Maru", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.mona-sans-regular {
+    font-family: "Mona Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.plus-jakarta-sans-regular {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.yusei-magic-regular {
+    font-family: "Yusei Magic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
