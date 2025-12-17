@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrbitSense - 社交引力図譜 | Nonfunctional, Inc.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=IBM+Plex+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* 简单的轨道动画 CSS */
+        .orbit-container { perspective: 1000px; }
+        .solar-system {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            transform-style: preserve-3d;
+            animation: tilt-spin 20s linear infinite;
+        }
+        @keyframes tilt-spin {
+            0% { transform: rotateX(20deg) rotateZ(0deg); }
+            100% { transform: rotateX(20deg) rotateZ(360deg); }
+        }
+
+        /* 核心黑洞 */
+        .core-blackhole {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 60px; height: 60px;
+            margin: -30px 0 0 -30px;
+            background: radial-gradient(circle, #000 40%, #444 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8), 0 0 10px rgba(100,100,255,0.5);
+            z-index: 10;
+        }
+
+        /* 轨道线 */
+        .orbit-ring {
+            position: absolute;
+            top: 50%; left: 50%;
+            border: 1px dashed rgba(0,0,0,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* 天体 */
+        .planet-body {
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .planet-body:hover { transform: translate(-50%, -50%) scale(1.5); }
+
+        /* 动画轨道 */
+        .orbit-1 { width: 140px; height: 140px; animation: spin-right 6s linear infinite; }
+        .orbit-2 { width: 240px; height: 240px; animation: spin-right 12s linear infinite; }
+        .orbit-3 { width: 340px; height: 340px; animation: spin-right 20s linear infinite; }
+
+        @keyframes spin-right {
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* 鼠标悬停提示框 */
+        .tooltip { opacity: 0; transition: opacity 0.2s; pointer-events: none; }
+        .planet-body:hover + .tooltip { opacity: 1; }
+    </style>
+</head>
+<body class="font-[Montserrat] text-slate-800 bg-slate-50 antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-slate-600 hover:text-black transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                <span class="font-bold text-sm">Back to Home</span>
+            </a>
+            <span class="font-heading font-bold text-lg">Project: OrbitSense</span>
+        </div>
+    </nav>
+
+    <div class="pt-32 pb-20 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-screen">
+
+        <div class="space-y-8">
+            <div class="inline-block bg-black text-white text-xs font-bold px-3 py-1 rounded-full mb-2">
+                R&D Project
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold font-heading leading-tight">
+                OrbitSense<br>
+                <span class="text-2xl text-slate-500 font-normal">社交引力図譜 / Social Gravity Map</span>
+            </h1>
+            <p class="text-lg text-slate-600 leading-relaxed">
+                自閉症スペクトラム(ASD)および神経多様性を持つ人々のために設計された、対人関係における心理的距離感を物理学的モデル（引力と軌道）で可視化する革新的なシステムです。
+            </p>
+
+            <div class="space-y-4 pt-4">
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">🪐</div>
+                    <div>
+                        <h3 class="font-bold text-slate-900">物理モデルによる可視化</h3>
+                        <p class="text-sm text-slate-600">人間関係を曖昧な「空気」ではなく、明確な「軌道と引力」として定義します。</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 shrink-0">🛡️</div>
+                    <div>
+                        <h3 class="font-bold text-slate-900">安全な距離の自動算出</h3>
+                        <p class="text-sm text-slate-600">相手の質量（性格特性）に応じた最適な「公転軌道」を提案し、衝突を防ぎます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative flex items-center justify-center bg-white rounded-3xl shadow-xl border border-slate-100 p-10 h-[500px] overflow-hidden">
+            <div class="absolute top-4 left-6 z-20">
+                <span class="text-xs font-bold text-slate-400 tracking-widest uppercase">Simulation Preview</span>
+            </div>
+
+            <div class="solar-system">
+
+                <div class="core-blackhole"></div>
+
+                <div class="orbit-ring orbit-1 border-red-200">
+                    <div class="planet-body bg-red-500 w-4 h-4 shadow-[0_0_10px_rgba(255,0,0,0.5)]"></div>
+                    <div class="tooltip absolute -top-12 left-1/2 -translate-x-1/2 bg-black text-white text-xs p-2 rounded w-32 text-center z-50">
+                        <strong>恒星 (Star)</strong><br>相互作用・近距離
+                    </div>
+                </div>
+
+                <div class="orbit-ring orbit-2 border-blue-200">
+                    <div class="planet-body bg-blue-500 w-6 h-6 shadow-[0_0_10px_rgba(0,0,255,0.5)]"></div>
+                    <div class="tooltip absolute -top-12 left-1/2 -translate-x-1/2 bg-black text-white text-xs p-2 rounded w-32 text-center z-50">
+                        <strong>惑星 (Planet)</strong><br>安定的・中距離
+                    </div>
+                </div>
+
+                <div class="orbit-ring orbit-3 border-gray-200">
+                    <div class="planet-body bg-slate-300 w-2 h-2"></div>
+                    <div class="tooltip absolute -top-12 left-1/2 -translate-x-1/2 bg-black text-white text-xs p-2 rounded w-32 text-center z-50">
+                        <strong>星屑 (Stardust)</strong><br>繊細・遠距離推奨
+                    </div>
+                </div>
+            </div>
+
+            <div class="absolute bottom-4 right-6 text-xs text-slate-300">
+                CSS Physics Engine v1.0
+            </div>
+        </div>
+
+    </div>
+
+    <section class="bg-white py-20 border-t border-slate-100">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-2xl font-bold mb-8">課題と解決策 (Problem & Solution)</h2>
+            <div class="prose prose-slate max-w-none text-slate-600">
+                <p>多くのASD当事者は、他者との心理的な距離が「近い/遠い/安全/危険」なのか判断できないという困難を抱えています。これが原因で、無意識のうちに相手を疲弊させたり、逆に距離を取りすぎて孤立する結果を生んでいます。</p>
+                <p><strong>OrbitSense</strong>は、すべての人間関係を宇宙における天体の引力関係として再定義します。</p>
+                <ul class="list-disc pl-5 space-y-2 mt-4">
+                    <li><strong>高密度天体（自分）:</strong> 強い引力を持つ存在として中心に固定。</li>
+                    <li><strong>星屑 (Stardust):</strong> 繊細で壊れやすい。遠距離軌道が必須。</li>
+                    <li><strong>惑星 (Planet):</strong> 安定しているが深い融合はしない。中距離軌道。</li>
+                    <li><strong>恒星 (Star):</strong> エネルギー交換が可能。近距離軌道。</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-slate-50 py-24 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="text-center mb-16">
+                <span class="inline-block bg-[#ccfd14] text-black text-xs font-bold px-3 py-1 rounded-full mb-4">
+                    PLAN & PRICING
+                </span>
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-4">
+                    導入プラン・料金体系
+                </h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">
+                    個人ユーザーから教育機関・企業研修まで、ニーズに合わせた最適なプランをご用意しています。
+                </p>
+            </div>
+
+            <div class="mb-20">
+                <h3 class="text-xl font-bold text-slate-800 mb-8 flex items-center gap-2">
+                    <span class="w-2 h-8 bg-black rounded-full"></span>
+                    個人向けプラン (Personal)
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+
+                    <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-slate-100 text-slate-500 text-xs font-bold px-4 py-2 rounded-bl-xl">
+                            Entry
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">Free (基本版)</h4>
+                        <div class="flex items-baseline gap-1 mb-6">
+                            <span class="text-4xl font-bold font-heading">¥0</span>
+                            <span class="text-slate-500">/月</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-8 border-b border-slate-100 pb-8">
+                            物理モデルによる対人距離の可視化を体験できるエントリープラン。
+                        </p>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start gap-3 text-sm text-slate-700">
+                                <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>OrbitSense 基本可視化ツール</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-slate-700">
+                                <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>ログイン不要・即時利用</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="block w-full py-3 rounded-full border border-black text-black text-center font-bold hover:bg-slate-50 transition-colors">
+                            無料で始める
+                        </a>
+                    </div>
+
+                    <div class="bg-black text-white rounded-3xl p-8 border border-black shadow-xl relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-[#ccfd14] text-black text-xs font-bold px-4 py-2 rounded-bl-xl">
+                            Recommended
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Premium (保存・分析)</h4>
+                        <div class="flex items-baseline gap-1 mb-6">
+                            <span class="text-4xl font-bold font-heading text-[#ccfd14]">¥980</span>
+                            <span class="text-gray-400">/月 (税込)</span>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-8 border-b border-gray-800 pb-8">
+                            関係性マップの保存と、AIによる距離感提案機能を利用可能。
+                        </p>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start gap-3 text-sm">
+                                <svg class="w-5 h-5 text-[#ccfd14] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>関係性マップのクラウド保存</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm">
+                                <svg class="w-5 h-5 text-[#ccfd14] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>AIによる最適距離の自動提案</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm">
+                                <svg class="w-5 h-5 text-[#ccfd14] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>詳細な天体タイプ分析レポート</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="block w-full py-3 rounded-full bg-[#ccfd14] text-black text-center font-bold hover:bg-white transition-colors">
+                            登録する
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold text-slate-800 mb-8 flex items-center gap-2">
+                    <span class="w-2 h-8 bg-[#ccfd14] rounded-full"></span>
+                    法人・教育機関向け (Business & Education)
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:border-black transition-all hover:shadow-lg">
+                        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4 text-2xl">🩺</div>
+                        <h4 class="font-bold text-slate-900 mb-2">カウンセリング施設</h4>
+                        <div class="text-2xl font-bold font-heading text-slate-900 mb-4">
+                            ¥50,000 <span class="text-sm font-normal text-slate-500">/年</span>
+                        </div>
+                        <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+                            クライアント教育用ツールとして導入。複数クライアントの管理機能付き。
+                        </p>
+                        <a href="contant.html" class="text-sm font-bold underline decoration-2 decoration-[#ccfd14] hover:text-slate-600">お問い合わせ ></a>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:border-black transition-all hover:shadow-lg">
+                        <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center mb-4 text-2xl">🎓</div>
+                        <h4 class="font-bold text-slate-900 mb-2">教育機関ライセンス</h4>
+                        <div class="text-2xl font-bold font-heading text-slate-900 mb-4">
+                            ¥150,000 <span class="text-sm font-normal text-slate-500">/年</span>
+                        </div>
+                        <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+                            ソーシャルスキルトレーニング(SST)の補助教材として全校導入可能。
+                        </p>
+                        <a href="contant.html" class="text-sm font-bold underline decoration-2 decoration-[#ccfd14] hover:text-slate-600">お問い合わせ ></a>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:border-black transition-all hover:shadow-lg">
+                        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4 text-2xl">🏢</div>
+                        <h4 class="font-bold text-slate-900 mb-2">企業研修パッケージ</h4>
+                        <div class="text-2xl font-bold font-heading text-slate-900 mb-4">
+                            ¥300,000 <span class="text-sm font-normal text-slate-500">/年</span>
+                        </div>
+                        <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+                            ダイバーシティ＆インクルージョン(D&I)研修や人事マネジメントに活用。
+                        </p>
+                        <a href="contant.html" class="text-sm font-bold underline decoration-2 decoration-[#ccfd14] hover:text-slate-600">お問い合わせ ></a>
+                    </div>
+
+                </div>
+
+                <div class="mt-8 p-6 bg-slate-100 rounded-xl text-center">
+                    <p class="text-sm text-slate-600">
+                        <strong>コンサルティング・開発受託:</strong> 特定のニーズに合わせたシステムカスタマイズやワークショップ開催も承っております。お気軽にご相談ください。
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===================================
+         Footer
+    ==================================== -->
+    <footer class="bg-black text-white py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="mb-8">
+                <a href="index.html" class="text-sm text-gray-400 hover:text-white transition-colors mr-6">ホーム</a>
+                <a href="index.html#about" class="text-sm text-gray-400 hover:text-white transition-colors mr-6">会社概要</a>
+                <a href="index.html#services" class="text-sm text-gray-400 hover:text-white transition-colors mr-6">事業内容</a>
+                <a href="news.html" class="text-sm text-gray-400 hover:text-white transition-colors mr-6">お知らせ</a>
+                <a href="contant.html" class="text-sm text-gray-400 hover:text-white transition-colors">お問い合わせ</a>
+            </div>
+            <p class="text-xs text-gray-500">
+                &copy; 2025 Nonfunctional, Inc. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -3,70 +3,510 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>実行機能障害株式会社 | Nonfunctional, Inc.</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@100;200;300;400;500;600;700&family=Kosugi&family=Kosugi+Maru&family=Mona+Sans:ital,wdth,wght@0,75..125,200..900;1,75..125,200..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Yusei+Magic&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
 </head>
 
-<body class="font-[Montserrat] text-slate-800 bg-slate-50">
+<body class="font-[Montserrat] text-slate-800 bg-slate-50 antialiased">
 
-    <header>
-        <div class="wrapper pb-24">
-            <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-white/10 backdrop-blur-lg rounded-full ">
-                <ul class="flex items-center ibm-bold  text-sm text-gray-800 px-6 py-5 kosugi-maru-regular">
-                    <li><a href="#" class="px-4 py-2 hover:text-gray-400 rounded transition-all duration-2000">ホーム</a></li>
-                    <li><a href="#" class="px-4 py-2 hover:text-gray-400 rounded transition-all duration-2000">会社情報</a></li>
-                    <li><a href="#" class="px-4 py-2 hover:text-gray-400 rounded transition-all duration-2000">プロジェクト</a></li>
-                    <li><a href="#" class="px-4 py-2 hover:text-gray-400 rounded transition-all duration-2000">お問い合わせ</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <!-- ===================================
+         Navigation Header
+    ==================================== -->
+    <nav id="main-nav" class="fixed w-full z-50 bg-white/10 backdrop-blur-md border-b border-gray-100">
+        <div class="nav-container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="nav-inner flex justify-between items-center h-20">
 
-        <section id="hero" class="py-20 px-5  rounded-xl mb-10">
-            <div class="max-w-7xl mx-auto  lg:px-6 flex flex-col lg:flex-row items-center gap-12">
-            <!-- 左侧文本 -->
-                <div class="lg:w-1/2 text-left space-y-6">
-                    <h1 class="text-5xl font-bold text-slate-700 text-left leading-[1.2]">Dysfunctional? Try superfunctional.</h1>
-                        <p class="text-md text-slate-500">ND × AI doesn’t follow standard protocols. We rewrite the rules, one glitch at a time.</p>
-                        <p class="text-md text-slate-500">Neurodivergent by nature, intelligent by design.</p>
+                <!-- Logo -->
+                 <a href="#">
+                    <div class="nav-logo flex-shrink-0 flex flex-col items-center">
+                        <p class="font-heading font-bold text-xl tracking-tight">実行機能障害株式会社</p>
+                        <span class=" text-sm">Nonfunctional, Inc.</span>
+                    </div>
+                </a>
+                <!-- Desktop Menu -->
+                <div class="nav-menu hidden md:flex space-x-8 kosugi-maru-regular text-slate-800">
+                    <a href="#about" class="nav-link text-gray-600 hover:text-black transition-colors text-sm font-medium">会社概要</a>
+                    <a href="#services" class="nav-link text-gray-600 hover:text-black transition-colors text-sm font-medium">事業内容</a>
+                    <a href="#company" class="nav-link text-gray-600 hover:text-black transition-colors text-sm font-medium">企業情報</a>
+                    <a href="/apps/web/news.html" class="nav-link text-gray-600 hover:text-black transition-colors text-sm font-medium">お知らせ</a>
                 </div>
-                <!-- 右侧展示图 -->
-                <div class="lg:w-1/2">
-                    <img src="..." alt="Platform preview" class="w-full rounded-lg shadow-md">
+
+                <!-- CTA Button -->
+                <div class="nav-cta">
+                    <a href="/apps/web/contant.html" class="btn btn-primary bg-[#ccfd14] text-black border border-black px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-800 hover:text-white transition-all">
+                        お問い合わせ
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===================================
+         Hero Section
+    ==================================== -->
+    <section id="hero" class="hero-section relative w-full min-h-screen flex items-center pt-20 md:pt-0 overflow-hidden ">
+
+        <!-- Background Image -->
+        <div class="hero-bg absolute inset-0 w-full h-full z-0">
+            <img src="img/hero-bg.jpg"
+                 alt="Hero Background"
+                 class="w-full h-full object-cover">
+        </div>
+
+        <!-- Hero Content -->
+        <div class="hero-content relative z-10 max-w-7xl mx-auto px-6 w-full flex flex-col md:flex-row items-center h-full pb-32 md:pb-0">
+            <!-- Hero Text -->
+            <div class="hero-text w-full md:w-5/12 flex flex-col justify-center py-12 md:py-0 px-2 fade-in-up">
+                <h1 class="hero-title font-heading text-3xl md:text-5xl font-bold leading-snug md:leading-normal mb-6 font-[ibm-bold] text-slate-800">
+                    テクノロジーで、<br>すべての個性に機能を。
+                </h1>
+                <p class="hero-description text-slate-600 md:text-md mb-6 delay-100 fade-in-up">AI技術とニューロダイバーシティの融合で、次世代の業務効率化と社会包摂を実現する。「実行機能障害株式会社」。既存の枠組みでは見過ごされてきた卓越した才能を、テクノロジーによって社会の原動力へ。</p>
+                    </p>
+                <!-- Hidden CTA for future use -->
+                <div class="hero-cta hidden gap-4 delay-200 fade-in-up">
+                    <a href="#services" class="btn btn-hero bg-black text-white px-8 py-4 rounded-full font-bold">
+                        事業内容を見る
+                    </a>
                 </div>
             </div>
-        </section>
 
-        <main>
-            <section class="bg-gradient-to-r from-green-200 to-green-100 p-10">
-                <div class="max-w-7xl mx-auto bg-white outline outline-1 outline-slate-200 shadow-sm rounded-xl p-6 sm:p-8 mt-10">
-                    <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4">About us</h2>
-                    <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
-                        Write a paragraph that talks about your company here. You can talk about your company's background, history, mission, vision, or philosophy - anything that will introduce your brand's persona to your audience. This will help build a connection between you and them.
+            <!-- Hero Image Space -->
+            <div class="hero-image-space w-full md:w-1/2 h-full"></div>
+
+        </div>
+
+        <!-- Hero Features Bar -->
+        <div class="hero-features absolute bottom-0 left-0 w-full bg-white z-20 border-y border-slate-200 flex flex-col md:flex-row">
+
+            <!-- Feature: CTA -->
+            <div class="feature-item feature-cta w-full md:w-1/4 p-6 flex items-center justify-center border-b md:border-b-0 md:border-r border-gray-100 bg-white">
+                <a href="/apps/web/news.html" class="btn btn-get-started bg-black text-white px-8 py-3 rounded-full font-bold text-sm tracking-wider hover:bg-gray-800 transition-colors">
+                    最新情報をもらう
+                </a>
+            </div>
+
+            <!-- Feature: Possibilities -->
+            <a href="#services" class="feature-item w-full md:w-1/4 p-6 flex items-center group hover:bg-gray-50 transition-colors border-b md:border-b-0 md:border-r border-gray-100">
+                <div class="feature-icon mr-4 text-brand-black">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                    </svg>
+                </div>
+                <div class="feature-content">
+                    <h3 class="feature-title font-bold text-sm text-slate-900 mb-1 flex items-center group-hover:text-accent-blue transition-colors">
+                        無限の可能性を開く
+                        <span class="ml-1 text-xs text-gray-400 group-hover:translate-x-1 transition-transform">&gt;</span>
+                    </h3>
+                    <p class="feature-description text-xs text-gray-500 leading-tight">
+                        最先端のAI技術で、新たな価値創造を実現します。
                     </p>
                 </div>
+            </a>
 
-            </section>
+            <!-- Feature: Quality -->
+            <a href="#services" class="feature-item w-full md:w-1/4 p-6 flex items-center group hover:bg-gray-50 transition-colors border-b md:border-b-0 md:border-r border-gray-100">
+                <div class="feature-icon mr-4 text-brand-black">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <div class="feature-content">
+                    <h3 class="feature-title font-bold text-sm text-slate-900 mb-1 flex items-center group-hover:text-accent-blue transition-colors">
+                        信頼できる品質
+                        <span class="ml-1 text-xs text-gray-400 group-hover:translate-x-1 transition-transform">&gt;</span>
+                    </h3>
+                    <p class="feature-description text-xs text-gray-500 leading-tight">
+                        高度な専門性と確かな技術力で、安心のソリューションを提供。
+                    </p>
+                </div>
+            </a>
 
-    <!-- 我们的JavaScript练习区
-    <div class="container mx-auto p-4 mt-8">
-        <h2 class="text-xl font-bold mb-4">JavaScript 互动练习</h2>
+            <!-- Feature: Speed -->
+            <a href="#services" class="feature-item w-full md:w-1/4 p-6 flex items-center group hover:bg-gray-50 transition-colors">
+                <div class="feature-icon mr-4 text-brand-black">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <div class="feature-content">
+                    <h3 class="feature-title font-bold text-sm text-slate-900 mb-1 flex items-center group-hover:text-accent-blue transition-colors">
+                        迅速な実装力
+                        <span class="ml-1 text-xs text-gray-400 group-hover:translate-x-1 transition-transform">&gt;</span>
+                    </h3>
+                    <p class="feature-description text-xs text-gray-500 leading-tight">
+                        スピーディーな開発体制で、ビジネス課題を素早く解決。
+                    </p>
+                </div>
+            </a>
 
-        <p id="magic-text" class="text-lg mb-4">点击下面的按钮看看会发生什么！</p>
+        </div>
+    </section>
 
-        <button id="magic-button" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
-            魔法按钮✨
-        </button>
+    <!-- ===================================
+         About Section
+    ==================================== -->
+    <section id="about" class="about-section py-24 bg-brand-gray">
+        <div class="about-container max-w-4xl mx-auto px-6 text-center">
+            <h2 class="section-title font-heading text-3xl font-bold mb-8">会社概要</h2>
+            <p class="about-description text-lg text-gray-700 leading-8 font-medium">
+                <ruby>実行機能障害株式会社<rt>じっこうきのうしょうがいかぶしきがいしゃ</rt></ruby>(Nonfunctional, Inc.)は、AI技術の社会実装と、神経多様性(ニューロダイバーシティ)への支援を両立させるテクノロジー企業です。<br><br>
+                現代社会において「機能しない(Non-functional)」と見なされがちな業務プロセスや、個人の特性による障壁を、最新のAIソリューションによって「超機能(Super-functional)」へと転換させます。私たちは、技術革新を通じて、誰もが能力を発揮できる多文化共生社会の実現を目指しています。
+            </p>
+        </div>
+    </section>
+
+        <!-- ===================================
+     News Preview Section (お知らせ)
+    ==================================== -->
+    <section id="news" class="news-preview-section py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
+
+                <!-- Left Side: Title & Description -->
+                <div class="lg:col-span-2">
+                    <h2 class="text-4xl md:text-3xl font-bold mb-6 text-slate-900">
+                        お知らせ
+                    </h2>
+                    <p class="text-slate-600 text-md mb-8 leading-relaxed">
+                        実行機能障害株式会社の最新情報・プロジェクト進捗をご覧いただけます。
+                    </p>
+                    <a href="news.html" class="inline-block bg-[#ccfd14] text-black font-bold px-8 py-4 rounded-full border-2 border-black hover:bg-slate-900 hover:text-white transition-all duration-300">
+                        すべて見る
+                    </a>
+                </div>
+
+                <!-- Right Side: News Cards -->
+                <div class="lg:col-span-3 space-y-4">
+
+                    <!-- News Card 1 -->
+                    <a href="news.html" class="block group">
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:shadow-xl transition-all duration-300">
+                            <div class="flex items-start justify-between gap-4">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <span class="text-xs font-bold text-[#ccfd14] bg-slate-900 px-3 py-1 rounded-full">
+                                            プロジェクト
+                                        </span>
+                                        <time class="text-xs text-slate-500">2025.12.13</time>
+                                    </div>
+                                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-slate-700 transition-colors line-clamp-2">
+                                        新規研究開発プロジェクト開始のお知らせ
+                                    </h3>
+                                </div>
+                                <svg class="w-5 h-5 text-slate-400 group-hover:text-slate-900 group-hover:translate-x-1 transition-all flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- News Card 2 -->
+                    <a href="news.html" class="block group">
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:shadow-xl transition-all duration-300">
+                            <div class="flex items-start justify-between gap-4">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <span class="text-xs font-bold text-green-700 bg-green-100 px-3 py-1 rounded-full">
+                                            ウェブサイト
+                                        </span>
+                                        <time class="text-xs text-slate-500">2025.11.15</time>
+                                    </div>
+                                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-slate-700 transition-colors line-clamp-2">
+                                        公式ウェブサイト開設のお知らせ
+                                    </h3>
+                                </div>
+                                <svg class="w-5 h-5 text-slate-400 group-hover:text-slate-900 group-hover:translate-x-1 transition-all flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- News Card 3 -->
+                    <a href="news.html" class="block group">
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:shadow-xl transition-all duration-300">
+                            <div class="flex items-start justify-between gap-4">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <span class="text-xs font-bold text-purple-700 bg-purple-100 px-3 py-1 rounded-full">
+                                            会社
+                                        </span>
+                                        <time class="text-xs text-slate-500">2025.09.04</time>
+                                    </div>
+                                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-slate-700 transition-colors line-clamp-2">
+                                        会社設立のお知らせ
+                                    </h3>
+                                </div>
+                                <svg class="w-5 h-5 text-slate-400 group-hover:text-slate-900 group-hover:translate-x-1 transition-all flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+        </section>
+
+<!-- ===================================
+     Services Section - 带开发中标记的版本
+==================================== -->
+<section id="services" class="services-section py-24 bg-slate-50 relative">
+    <div class="services-container max-w-7xl mx-auto px-6">
+        <h2 class="section-title font-heading text-3xl font-bold mb-16 text-center">事業内容</h2>
+
+        <div class="services-grid grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- Service Card 1: AI Solutions -->
+            <div class="service-card group bg-white rounded-3xl border-2 border-black shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden">
+
+                <!-- Top Bar -->
+                <div class="top-bar h-10 bg-slate-800 group-hover:bg-[#ccfd14] transition-all duration-300 flex items-center justify-center">
+                </div>
+
+                <!-- Content -->
+                <div class="p-8">
+
+                <!-- Icon -->
+                <div class="service-icon-wrapper mb-6">
+                    <div class="w-16 h-16 rounded-full bg-slate-100 group-hover:bg-[#ccfd14] flex items-center justify-center transition-all duration-300">
+                        <svg class="w-8 h-8 text-slate-700 group-hover:text-slate-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Title -->
+                <h3 class="service-title text-2xl font-bold mb-4 text-slate-900 group-hover:text-slate-900">
+                    AIソリューション開発
+                </h3>
+
+                <!-- Description -->
+                <p class="service-description text-slate-600 text-sm leading-relaxed mb-6">
+                    企業のDX推進を支援する業務自動化ツールや、多言語対応チャットボットの開発を行います。直感的で使いやすいインターフェース設計により、業務効率の最大化を実現します。
+                </p>
+
+                <!-- Features List -->
+                <ul class="service-features text-sm text-slate-600 space-y-2">
+                    <li class="flex items-start gap-2">
+                        <span class="text-[#ccfd14] mt-1">●</span>
+                        <span>業務自動化ツールの開発</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-[#ccfd14] mt-1">●</span>
+                        <span>多言語対応・ローカライゼーション</span>
+                    </li>
+                </ul>
+
+                </div><!-- /Content -->
+            </div>
+
+            <!-- Service Card 2: Neurodiversity Support (CLICKABLE) -->
+            <a href="projects.html" class="service-card group block bg-white rounded-3xl border-2 border-black shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden relative">
+
+                <!-- Top Bar with Badge & Arrow -->
+                <div class="top-bar h-10 bg-slate-800 group-hover:bg-[#ccfd14] transition-all duration-300 flex items-center justify-between px-4">
+
+                    <!-- Badge: "開発中" -->
+                    <span class="bg-orange-500 text-white text-[10px] font-bold px-3 py-1 rounded-full tracking-wider">
+                        開発中
+                    </span>
+
+                    <!-- Arrow Icon -->
+                    <svg class="w-5 h-5 text-white group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+
+                <!-- Content -->
+                <div class="p-8">
+
+                <!-- Icon -->
+                <div class="service-icon-wrapper mb-6">
+                    <div class="w-16 h-16 rounded-full bg-slate-100 group-hover:bg-[#ccfd14] flex items-center justify-center transition-all duration-300">
+                        <svg class="w-8 h-8 text-slate-700 group-hover:text-slate-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Title -->
+                <h3 class="service-title text-2xl font-bold mb-4 text-slate-900 group-hover:text-slate-900">
+                    ニューロダイバーシティ支援
+                </h3>
+
+                <!-- Description -->
+                <p class="service-description text-slate-600 text-sm leading-relaxed mb-6">
+                    発達障害や学習障害などの特性を持つ方々が、その能力を最大限に発揮できるための支援プラットフォームを提供します。
+                </p>
+
+                <!-- Features List -->
+                <ul class="service-features text-sm text-slate-600 space-y-2">
+                    <li class="flex items-start gap-2">
+                        <span class="text-[#ccfd14] mt-1">●</span>
+                        <span>特性評価ツールの開発</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-[#ccfd14] mt-1">●</span>
+                        <span>学習支援アプリケーション提供</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-[#ccfd14] mt-1">●</span>
+                        <span>卓越した才能の発見と育成支援ツールの開発</span>
+                    </li>
+                </ul>
+
+                </div><!-- /Content -->
+            </a>
+
+            <!-- Service Card 3: Research -->
+            <div class="service-card group bg-white rounded-3xl border-2 border-black shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden">
+
+                <!-- Top Bar -->
+                <div class="top-bar h-10 bg-slate-800 group-hover:bg-[#ccfd14] transition-all duration-300 flex items-center justify-center">
+                </div>
+
+                <!-- Content -->
+                <div class="p-8">
+
+                <!-- Icon -->
+                <div class="service-icon-wrapper mb-6">
+                    <div class="w-16 h-16 rounded-full bg-slate-100 group-hover:bg-[#ccfd14] flex items-center justify-center transition-all duration-300">
+                        <svg class="w-8 h-8 text-slate-700 group-hover:text-slate-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Title -->
+                <h3 class="service-title text-2xl font-bold mb-4 text-slate-900 group-hover:text-slate-900">
+                    技術調査・情報発信
+                </h3>
+
+                <!-- Description -->
+                <p class="service-description text-slate-600 text-sm leading-relaxed mb-6">
+                    AI・IT技術の最新動向分析や、多文化視点に基づく技術レポートを提供し、企業のグローバル展開をサポートします。
+                </p>
+
+                <!-- Features List -->
+                <ul class="service-features text-sm text-slate-600 space-y-2">
+                    <li class="flex items-start gap-2">
+                        <span class="text-[#ccfd14] mt-1">●</span>
+                        <span>技術動向レポート作成</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-[#ccfd14] mt-1">●</span>
+                        <span>グローバル市場調査</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-[#ccfd14] mt-1">●</span>
+                        <span>グローバル視点による産業構造分析</span>
+                    </li>
+                </ul>
+
+                </div><!-- /Content -->
+            </div>
+
+        </div>
     </div>
-    -->
-        </main>
+</section>
 
 
-    <script src="js/script.js"></script>
+
+    <!-- ===================================
+         Company Profile Section
+    ==================================== -->
+    <section id="company" class="company-section py-20 bg-white">
+        <div class="company-container max-w-3xl mx-auto px-6">
+            <h2 class="section-title font-heading text-3xl font-bold mb-12 text-center">企業情報</h2>
+
+            <div class="company-info bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <dl class="company-details divide-y divide-slate-100">
+
+                    <div class="detail-row px-6 py-4 grid grid-cols-3 gap-4 hover:bg-gray-50">
+                        <dt class="detail-label text-sm font-medium text-slate-500">会社名</dt>
+                        <dd class="detail-value text-sm font-bold text-slate-900 col-span-2">
+                            実行機能障害株式会社 (Nonfunctional, Inc.)
+                        </dd>
+                    </div>
+
+                    <div class="detail-row px-6 py-4 grid grid-cols-3 gap-4 hover:bg-gray-50">
+                        <dt class="detail-label text-sm font-medium text-gray-500">代表取締役</dt>
+                        <dd class="detail-value text-sm text-gray-900 col-span-2">
+                            白惺 凌
+                        </dd>
+                    </div>
+
+                    <div class="detail-row px-6 py-4 grid grid-cols-3 gap-4 hover:bg-gray-50">
+                        <dt class="detail-label text-sm font-medium text-gray-500">所在地</dt>
+                        <dd class="detail-value text-sm text-gray-900 col-span-2">
+                            〒153-0064<br>
+                            東京都目黒区下目黒1-1-14 コノトラビル 7F
+                        </dd>
+                    </div>
+
+                    <div class="detail-row px-6 py-4 grid grid-cols-3 gap-4 hover:bg-gray-50">
+                        <dt class="detail-label text-sm font-medium text-gray-500">設立</dt>
+                        <dd class="detail-value text-sm text-gray-900 col-span-2">
+                            2025年9月4日
+                        </dd>
+                    </div>
+
+                    <div class="detail-row px-6 py-4 grid grid-cols-3 gap-4 hover:bg-gray-50">
+                        <dt class="detail-label text-sm font-medium text-gray-500">資本金</dt>
+                        <dd class="detail-value text-sm text-gray-900 col-span-2">
+                            5,000,000円
+                        </dd>
+                    </div>
+
+                    <div class="detail-row px-6 py-4 grid grid-cols-3 gap-4 hover:bg-gray-50">
+                        <dt class="detail-label text-sm font-medium text-gray-500">E-mail</dt>
+                        <dd class="detail-value text-sm text-gray-900 col-span-2">
+                            wecore@nonfunctional-inc.com
+                        </dd>
+                    </div>
+
+                </dl>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================
+         Contact / Footer Section
+    ==================================== -->
+    <footer id="contact" class="contact-section bg-black text-white py-12">
+        <div class="contact-container max-w-7xl mx-auto px-6 text-center">
+
+            <h3 class="footer-title font-heading text-2xl font-bold mb-8">Contact Us</h3>
+
+            <p class="footer-description text-gray-400 mb-8">
+                事業に関するお問い合わせは、以下のお問い合わせフォームよりお願いいたします。
+            </p>
+
+            <a href="/apps/web/contant.html"
+               class="contact-button inline-block border border-white px-8 py-3 rounded-full hover:text-black hover:border-black hover:bg-[#ccfd14] transition-all mb-12">
+                お問い合わせフォームを開く
+            </a>
+
+            <div class="footer-bottom border-t border-gray-800 pt-8">
+                <p class="copyright text-xs text-gray-500">
+                    &copy; 2025 Nonfunctional, Inc. All rights reserved.
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
 </body>
 </html>
